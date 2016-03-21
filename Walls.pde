@@ -35,10 +35,48 @@ class Walls {
     // If there is a wall between the two given positions, return the point of collision.
     // Otherwise, return some value that can never be a collision.
     // Input & Output are in pixel coordinates
-    PVector collision(PVector fromPosition, PVector toPosition) {
-    }
+    boolean collision(PVector fromPosition,PVector toPosition) {
+  
+    int startingx=pixelToDot(fromPosition.x);
+    int startingy=pixelToDot(fromPosition.y);
+    int endingx=pixelToDot(toPosition.x); 
+    int endingy=pixelToDot(toPosition.y);
+    boolean there_is_a_wall;
+   if(vertical[startingx][startingy]==true){
+         there_is_a_wall=true;
+   }else if(vertical[endingx][endingy]==true){
+         there_is_a_wall=true;
+   }else if(horizontal[startingx][startingy]==true){
+         there_is_a_wall=true;
+   }else if(horizontal[endingx][endingy]==true){
+         there_is_a_wall=true;
+   }else{
+   there_is_a_wall=false;
+   }
+      
+      
+      return there_is_a_wall;
+
+}    
+  
 
     void render() {
+      
+        for(int i=0; i<boardHeight; i++) {
+            for (int j=0; j<boardWidth; j++) {
+                if (vertical[i][j]==true) {
+                  stroke(225,225,400);   
+                  rect(dotToPixel(i)+14,dotToPixel(j)+14,3,dotSpacing); 
+                } 
+                 if (horizontal[i][j]==true) {
+                  stroke(225,225,400);   
+                  rect(dotToPixel(i)+14,dotToPixel(j)+14,dotSpacing,3); ; 
+                } 
+                      
+          }
+        
     }
-
-}
+     
+    }
+    
+  }

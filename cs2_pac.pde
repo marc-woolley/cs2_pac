@@ -18,6 +18,8 @@ float dotToPixel(int x) {
     return (0.5 + x) * dotSpacing;
 }
 
+
+
 // pixelToDot finds the box in which the pixel is contained
 int pixelToDot(float x) {
     if (x > boardWidth * dotSpacing) {
@@ -36,6 +38,40 @@ void setup() {
 void draw() {
     clear();
     dots.render();
-    pac.render();
+    pac.render(0);
     walls.render();
+
+if(keyPressed){ 
+     if(key=='D'|| key=='d'){ 
+      pac.setDirection(Dir.EAST);
+      pac.updatePosition(walls);
+          }else if(key=='A'|| key=='a'){
+             pac.setDirection(Dir.WEST);
+             pac.updatePosition(walls);
+              }else if(key=='W'|| key=='w'){  
+                 pac.setDirection(Dir.NORTH);
+                 pac.updatePosition(walls);
+                    }else if(key=='S'|| key=='s'){
+                       pac.setDirection(Dir.SOUTH);
+                       pac.updatePosition(walls);   
+  }
+   }
+          if(key==CODED){
+            if(keyCode==UP){
+              pac.setDirection(Dir.NORTH);
+              pac.updatePosition(walls);  
+              }else if(keyCode==DOWN){
+                   pac.setDirection(Dir.SOUTH);
+                    pac.updatePosition(walls);  
+                    }else if(keyCode==RIGHT){
+                        pac.setDirection(Dir.EAST);
+                        pac.updatePosition(walls); 
+                       }else if(keyCode==LEFT){
+                              pac.setDirection(Dir.WEST);            
+                              pac.updatePosition(walls); 
+          }
+          
+          }
+dots.remove(pac.getPosition());
+
 }
