@@ -1,4 +1,4 @@
-class Dots {
+            class Dots {
    private boolean[][] dots;
    private int count;
     
@@ -36,7 +36,7 @@ class Dots {
  count=count+1;  
 }
   
-println(count);
+//println(count);
    
    return count ;
    

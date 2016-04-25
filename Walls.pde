@@ -42,35 +42,44 @@ class Walls {
     int endingx=pixelToDot(toPosition.x); 
     int endingy=pixelToDot(toPosition.y);
     boolean there_is_a_wall;
-   if(vertical[startingx][startingy]==true){
+   
+   if(dotToPixel(startingx) == dotToPixel(endingx)){
+     if(vertical[startingx][startingy]==true){
+         there_is_a_wall=false;
+     }else if(vertical[endingx][endingy]==true){
          there_is_a_wall=true;
+   }
+ 
+   
+   
+  /* if(vertical[startingx][startingy]==true){
+         there_is_a_wall=false;
    }else if(vertical[endingx][endingy]==true){
          there_is_a_wall=true;
    }else if(horizontal[startingx][startingy]==true){
-         there_is_a_wall=true;
+         there_is_a_wall=false;
    }else if(horizontal[endingx][endingy]==true){
          there_is_a_wall=true;
    }else{
    there_is_a_wall=false;
-   }
-      
+   }*/
+      println(there_is_a_wall);
       
       return there_is_a_wall;
 
 }    
   
 
-    void render() {
       
         for(int i=0; i<boardHeight; i++) {
             for (int j=0; j<boardWidth; j++) {
                 if (vertical[i][j]==true) {
                   stroke(225,225,400);   
-                  rect(dotToPixel(i)+14,dotToPixel(j)+14,3,dotSpacing); 
+                  rect(dotToPixel(i)+15,dotToPixel(j)-15,3,dotSpacing); 
                 } 
                  if (horizontal[i][j]==true) {
                   stroke(225,225,400);   
-                  rect(dotToPixel(i)+14,dotToPixel(j)+14,dotSpacing,3); ; 
+                  rect(dotToPixel(i)-15,dotToPixel(j)+15,dotSpacing,3); ; 
                 } 
                       
           }
